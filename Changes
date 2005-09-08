@@ -1,4 +1,8 @@
 Revision history for Perl extension DBIx::MySQLSequence.
 
-0.1  Wed Jan 17 11:46:41 2001
+0.2  Sat Apr 20 05:57:32 2002
+	- Build script correctly requires DBI and DBD::mysql
+	- Using the correct directory structure now
+
+0.1  Wed Jan 17 11:46:41 2002
 	- original version

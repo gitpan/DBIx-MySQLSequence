@@ -1,0 +1,17 @@
+name: DBIx-MySQLSequence
+version: 1.00
+abstract: Proper and correct (emulated) sequence support for MySQL
+author: Adam Kennedy <cpan@ali.as>
+license: perl
+distribution_type: module
+build_requires:
+  Test::More: 0.47
+  File::Spec: 0.80
+requires:
+  perl: 5.005
+  DBI: 0
+  DBD::mysql: 0
+no_index:
+  directory:
+    - inc
+generated_by: Module::Install version 0.37
