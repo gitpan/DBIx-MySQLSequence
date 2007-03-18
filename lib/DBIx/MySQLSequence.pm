@@ -161,11 +161,12 @@ Note: C<remove_sequence_support> can ONLY be called as a static method.
 
 use 5.005;
 use strict;
-use DBI ();
+use Params::Util '_ARRAY0', '_INSTANCE';
+use DBI          ();
 
 use vars qw{$VERSION $errstr $MYSQL_SEQUENCE_TABLE};
 BEGIN {
-	$VERSION              = '1.00';
+	$VERSION              = '1.02';
 
 	# Class-level error string
 	$errstr               = '';
@@ -196,7 +197,7 @@ sub new {
 	my $name  = shift or return $class->_error( "Missing sequence name argument" );
 
 	# Check that it is a mysql database handle
-	unless ( UNIVERSAL::isa( $dbh, 'DBI::db' ) ) {
+	unless ( _INSTANCE($dbh, 'DBI::db') ) {
 		return $class->_error( "The database handle argument is not a DBI database handle" );
 	}
 	unless ( $dbh->{Driver}->{Name} eq 'mysql' ) {
@@ -577,7 +578,7 @@ sub _execute {
 	my $sql       = shift;
 	my $arguments = shift;
 	my $rformat   = shift;
-	unless ( ref $arguments eq 'ARRAY' ) {
+	unless ( _ARRAY0($arguments) ) {
 		return $self->_error( "Arguments list is not an array reference" );
 	}
 	
@@ -696,25 +697,22 @@ This would be a good thing. It would make things MUCH faster.
 
 =head1 AUTHORS
 
-Adam Kennedy, L<http://ali.as/>, cpan@ali.as
+Adam Kennedy E<lt>cpan@ali.asE<gt>
 
 Patches are welcome
 
 =head1 SEE ALSO
 
-DBIx::OracleSequence, 
+DBIx::OracleSequence
 
 =head1 COPYRIGHT
 
-Code Copyright Adam Kennedy 2002
+Copyright 2002, 2007 Adam Kennedy.
 
-This code is released under the terms of Perl itself.
+This program is free software; you can redistribute
+it and/or modify it under the same terms as Perl itself.
 
-=head1 BLATANT PLUG
-
-This module was created by merging relavent functionality extracted from various 
-modules in the AppSpace Development System.
-
-AppSpace is available at http://ali.as/AppSpace/
+The full text of the license can be found in the
+LICENSE file included with this module.
 
 =cut
