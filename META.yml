@@ -1,11 +1,12 @@
 --- 
 abstract: Proper and correct (emulated) sequence support for MySQL
-author: Adam Kennedy <cpan@ali.as>
+author: 
+  - Adam Kennedy <adamk@cpan.org>
 build_requires: 
   File::Spec: 0.80
   Test::More: 0.47
 distribution_type: module
-generated_by: Module::Install version 0.65
+generated_by: Module::Install version 0.68
 license: perl
 meta-spec: 
   url: http://module-build.sourceforge.net/META-spec-v1.3.html
@@ -18,5 +19,6 @@ no_index:
 requires: 
   DBD::mysql: 0
   DBI: 0
+  Params::Util: 0.26
   perl: 5.005
-version: 1.02
+version: 1.04
